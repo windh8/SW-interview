@@ -8,4 +8,10 @@ and run the following scripts (in order):
 1. `npm install`
 2. `npm start`
 
-## More Notes to come later
+## To Do:
+- Style Web-App with CSS
+- Comment Code using Block comments
+- Improve the Front End Look and Feel
+- Look at possible error cases and how to handle them
+  - ex: null object of salesData
+- Create a Header & Style it
