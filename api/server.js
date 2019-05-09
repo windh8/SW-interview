@@ -5,7 +5,7 @@ const app = express();
 
 const sampleSales = require('./data/sampleSales');
 
-app.use(cors())
+app.use(cors());
 
 const port = process.env.PORT || 8000;
 

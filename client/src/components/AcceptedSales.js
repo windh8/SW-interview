@@ -1,7 +1,13 @@
 import React from 'react';
 
+/* AcceptedSales will show all sales with an 'accepted' state. It will also
+ * allow the user to change an accepted sale from an 'accepted' state to a
+ * 'sold' state. */
 const AcceptedSales = ({acceptedSale, onSaleSold}) => {
 
+  /* onButtonClick will change the state of the selected sale to an
+   * 'sold' state. List of all given sales will be updated through
+   * onSaleSold to reflect change(s). */
   const onButtonClick = item => {
     item.status = "Sold";
     console.log(item);

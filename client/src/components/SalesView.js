@@ -1,3 +1,5 @@
+import './SalesApp.css';
+
 import React, {Component} from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
 import axios from 'axios';
@@ -9,12 +11,16 @@ import SoldSales from './SoldSales';
 class SalesViews extends Component {
   state = { sales: [] };
 
+  /* Once the component is mounted, an axios request will be sent to recieve
+   * the sample sales given; they will be stored in the SalesViews component state. */
   componentDidMount = async () => {
     const {data} = await axios.get('http://localhost:8000/sampleSales');
     this.setState({ sales: data });
   }
 
-  // Will update state of all sales when a sale goes from open to accepted state
+  /* onSaleAccepted will update the state of the SalesViews component to
+   * reflect any changes made to an open sale (open to accepted), shown
+   * in the OpenSales component. */
   onSaleAccepted = acceptedSale => {
     const updatedState = this.state.sales.map((item) => {
       if(item.name === acceptedSale.name) {
@@ -25,6 +31,9 @@ class SalesViews extends Component {
     this.setState({ sales: updatedState });
   }
 
+  /* onSaleSold will update the state of the SalesViews component to
+   * reflect any changes made to an accepted sale (accepted to sold), shown
+   * in the AcceptedSales component. */
   onSaleSold = soldSale => {
     const updatedState = this.state.sales.map((item) => {
       if(item.name === soldSale.name) {
@@ -35,7 +44,8 @@ class SalesViews extends Component {
     this.setState({ sales: updatedState });
   }
 
-  // Creates an array of sales that are open, from the total sample sales given
+  /* populateOpenList creates a list of sales that have an open state,
+   * from the total sample sales given. */
   populateOpenList = () => {
     return this.state.sales.filter((item) => {
       if(item.status === "Open") {
@@ -45,6 +55,8 @@ class SalesViews extends Component {
     });
   }
 
+  /* populateAcceptedList creates a list of sales that have an accepted state,
+   * from the total sample sales given. */
   populateAcceptedList = () => {
     return this.state.sales.filter((item) => {
       if(item.status === "Accepted") {
@@ -54,6 +66,8 @@ class SalesViews extends Component {
     });
   }
 
+  /* populateSoldList creates a list of sales that have a sold state,
+   * from the total sample sales given. */
   populateSoldList = () => {
     return this.state.sales.filter((item) => {
       if(item.status === "Sold") {

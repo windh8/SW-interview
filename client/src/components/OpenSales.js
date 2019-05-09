@@ -1,10 +1,12 @@
-import './OpenSales.css';
 import React from 'react';
 
+/* OpenSales will show all sales with an 'open' state. It will also allow
+ * the user to change an open sale from an 'open' state to an 'accepted' state. */
 const OpenSales = ({openSale, onSaleAccepted}) => {
-  // This Component OpenSales will be given a prop openSale, which will
-  // contain all open sales contained in an array.
 
+  /* onButtonClick will change the state of the selected sale to an
+   * 'accepted' state. List of all given sales will be updated through
+   * onSaleAccepted to reflect change(s). */
   const onButtonClick = item => {
     item.status = "Accepted";
     console.log(item);

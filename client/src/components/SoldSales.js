@@ -1,6 +1,6 @@
-import './OpenSales.css';
 import React from 'react';
 
+/* SoldSales will show all sales with a 'sold' state. */
 const SoldSales = ({soldSale}) => {
   return(
     <div>
