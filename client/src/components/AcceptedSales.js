@@ -49,7 +49,8 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                     onChange={(event) => transaction.salePrice = event.target.value }/>
                 </td>
                 <td>
-                  <button onClick={() => onButtonClick(item) }>Sell</button>
+                  <button className='btn btn-primary' 
+                    onClick={() => onButtonClick(item) }>Sell</button>
                 </td>
               </tr>
             );

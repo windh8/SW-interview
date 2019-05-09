@@ -38,7 +38,8 @@ const OpenSales = ({openSale, onSaleAccepted}) => {
                     </a>
                   </td>
                   <td>
-                    <button onClick={() => onButtonClick(item)}>Accept</button>
+                    <button className='btn btn-primary' 
+                      onClick={() => onButtonClick(item)}>Accept</button>
                   </td>
                 </tr>
               );
