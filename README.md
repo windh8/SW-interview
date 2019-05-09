@@ -15,5 +15,5 @@ and run the following scripts in each directory (in order):
 - Comment Code using Block comments :heavy_check_mark:
 - Improve the Front End Look and Feel :heavy_check_mark:
 - Look at possible error cases and how to handle them
-  - null object of salesData
+  - empty sales Data
   - Input check for monetary value (AcceptedSales Component) :heavy_check_mark:

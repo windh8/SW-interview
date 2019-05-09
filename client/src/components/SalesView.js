@@ -9,12 +9,15 @@ import AcceptedSales from './AcceptedSales';
 import SoldSales from './SoldSales';
 
 class SalesViews extends Component {
-  state = { sales: [] };
+  state = { sales: [], warning: '' };
 
   /* Once the component is mounted, an axios request will be sent to recieve
    * the sample sales given; they will be stored in the SalesViews component state. */
   componentDidMount = async () => {
     const {data} = await axios.get('http://localhost:8000/sampleSales');
+    if(data.length === 0) {
+      this.setState({ warning: 'Whoops! Looks like no sale information is available right now.' });
+    }
     this.setState({ sales: data });
   }
 
@@ -48,7 +51,7 @@ class SalesViews extends Component {
    * from the total sample sales given. */
   populateOpenList = () => {
     return this.state.sales.filter((item) => {
-      if(item.status === "Open") {
+      if(item.status === 'Open') {
         return item;
       }
       return null;
@@ -59,7 +62,7 @@ class SalesViews extends Component {
    * from the total sample sales given. */
   populateAcceptedList = () => {
     return this.state.sales.filter((item) => {
-      if(item.status === "Accepted") {
+      if(item.status === 'Accepted') {
         return item;
       }
       return null;
@@ -70,7 +73,7 @@ class SalesViews extends Component {
    * from the total sample sales given. */
   populateSoldList = () => {
     return this.state.sales.filter((item) => {
-      if(item.status === "Sold") {
+      if(item.status === 'Sold') {
         return item;
       }
       return null;
@@ -80,19 +83,20 @@ class SalesViews extends Component {
   render() {
     return(
       <div>
-        <Tabs defaultActiveKey="Open" id="uncontrolled-tab-example">
-          <Tab eventKey="Open" title="Open">
+        <Tabs defaultActiveKey='Open' id='uncontrolled-tab-example'>
+          <Tab eventKey='Open' title='Open'>
             <OpenSales openSale={ this.populateOpenList() }
               onSaleAccepted={this.onSaleAccepted}/>
           </Tab>
-          <Tab eventKey="Accepted" title="Accepted">
+          <Tab eventKey='Accepted' title='Accepted'>
             <AcceptedSales acceptedSale={ this.populateAcceptedList() }
               onSaleSold={this.onSaleSold}/>
           </Tab>
-          <Tab eventKey="Sold" title="Sold">
+          <Tab eventKey='Sold' title='Sold'>
             <SoldSales soldSale={ this.populateSoldList() } />
           </Tab>
         </Tabs>
+        <div className={this.state.warning ? `alert alert-warning` : ``}>{ this.state.warning }</div>
       </div>
     );
   }
