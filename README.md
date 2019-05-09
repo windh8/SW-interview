@@ -3,7 +3,7 @@ To run the web app you will need to go into the following directories:
 - api
 - client
 
-and run the following scripts (in order):
+and run the following scripts in each directory (in order):
 
 1. `npm install`
 2. `npm start`
