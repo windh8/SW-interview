@@ -6,7 +6,9 @@ class App extends Component {
   render() {
     return(
       <div>
-        <h3>Snapwire Interview App</h3>
+        <div className="header">
+          <h2>Snapwire</h2>
+        </div>
         <SalesView />
       </div>
     );

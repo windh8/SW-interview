@@ -1,4 +1,4 @@
-import './SalesApp.css';
+import '../css/SalesApp.css';
 
 import React, {Component} from 'react';
 import {Tabs, Tab} from 'react-bootstrap';

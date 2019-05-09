@@ -27,12 +27,15 @@ const OpenSales = ({openSale, onSaleAccepted}) => {
         <tbody>
           {
             openSale.map((item, index) => {
+              const {name, price, imageUrl} = item;
               return(
                 <tr key={index}>
-                  <td>{item.name}</td>
-                  <td>{`$${item.price}`}</td>
+                  <td>{name}</td>
+                  <td>{`$${price}`}</td>
                   <td>
-                    <img src={item.imageUrl} alt={`${item.name}'s Sale'`}/>
+                    <a href={imageUrl} target='_blank' rel="noopener noreferrer">
+                    <img src={imageUrl} alt={`${name}'s Sale'`}/>
+                    </a>
                   </td>
                   <td>
                     <button onClick={() => onButtonClick(item)}>Accept</button>
