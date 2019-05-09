@@ -9,11 +9,11 @@ and run the following scripts in each directory (in order):
 2. `npm start`
 
 ## To Do:
-- Style Web-App with CSS :heavy_check_mark:
+- Style Web-App with CSS:
   - Create a Header & Style it
   - Style Components :heavy_check_mark:
 - Comment Code using Block comments :heavy_check_mark:
 - Improve the Front End Look and Feel :heavy_check_mark:
 - Look at possible error cases and how to handle them
-  - empty sales Data
+  - empty sales Data :heavy_check_mark:
   - Input check for monetary value (AcceptedSales Component) :heavy_check_mark:
