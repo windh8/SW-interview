@@ -1,7 +1,7 @@
 import './OpenSales.css';
 import React from 'react';
 
-const SoldSales = (props) => {
+const SoldSales = ({soldSale}) => {
   return(
     <div>
       <table>
@@ -16,7 +16,7 @@ const SoldSales = (props) => {
         </thead>
         <tbody>
         {
-          props.soldSale.map((item, index) => {
+          soldSale.map((item, index) => {
             return(
               <tr key={index}>
                 <td>{item.name}</td>

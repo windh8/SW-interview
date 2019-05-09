@@ -5,7 +5,7 @@ const OpenSales = ({openSale, onSaleAccepted}) => {
   // This Component OpenSales will be given a prop openSale, which will
   // contain all open sales contained in an array.
 
-  const onButtonClick = (item) => {
+  const onButtonClick = item => {
     item.status = "Accepted";
     console.log(item);
     onSaleAccepted(item);

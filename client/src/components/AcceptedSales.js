@@ -2,7 +2,7 @@ import React from 'react';
 
 const AcceptedSales = ({acceptedSale, onSaleSold}) => {
 
-  const onButtonClick = (item) => {
+  const onButtonClick = item => {
     item.status = "Sold";
     console.log(item);
     onSaleSold(item);

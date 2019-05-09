@@ -15,7 +15,7 @@ class SalesViews extends Component {
   }
 
   // Will update state of all sales when a sale goes from open to accepted state
-  onSaleAccepted = (acceptedSale) => {
+  onSaleAccepted = acceptedSale => {
     const updatedState = this.state.sales.map((item) => {
       if(item.name === acceptedSale.name) {
         return acceptedSale;
@@ -25,7 +25,7 @@ class SalesViews extends Component {
     this.setState({ sales: updatedState });
   }
 
-  onSaleSold = (soldSale) => {
+  onSaleSold = soldSale => {
     const updatedState = this.state.sales.map((item) => {
       if(item.name === soldSale.name) {
         return soldSale;
