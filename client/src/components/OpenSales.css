@@ -1,0 +1,10 @@
+td, th {
+  width: 150px;
+  text-align: center;
+  padding: 10px 0px;
+}
+
+td img {
+  height: 150px;
+  width: 250px;
+}
