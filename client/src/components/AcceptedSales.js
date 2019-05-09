@@ -9,9 +9,16 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
    * 'sold' state. List of all given sales will be updated through
    * onSaleSold to reflect change(s). */
   const onButtonClick = item => {
-    item.status = "Sold";
-    console.log(item);
-    onSaleSold(item);
+      const {buyerName, salePrice} = item.transaction;
+
+      /* If the salePrice contains only monetary values, for example (5, 5.24, etc...),
+       * then allow the sale item to change its state from 'accepted' to 'sold'. */
+      const isPriceNumber = RegExp('[a-zA-Z]').test(salePrice);
+      if(buyerName && salePrice && !isNaN(parseFloat(salePrice)) && !isPriceNumber) {
+        item.status = "Sold";
+        console.log(item);
+        onSaleSold(item);
+      }
   }
 
   return(
@@ -31,6 +38,7 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
         {
           acceptedSale.map((item, index) => {
             const {name, price, imageUrl, transaction} = item;
+
             return(
               <tr key={`${name}-${index}`}>
                 <td>{name}</td>
@@ -49,7 +57,7 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                     onChange={(event) => transaction.salePrice = event.target.value }/>
                 </td>
                 <td>
-                  <button className='btn btn-primary' 
+                  <button className='btn btn-primary'
                     onClick={() => onButtonClick(item) }>Sell</button>
                 </td>
               </tr>

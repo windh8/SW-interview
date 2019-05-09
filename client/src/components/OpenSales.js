@@ -38,7 +38,7 @@ const OpenSales = ({openSale, onSaleAccepted}) => {
                     </a>
                   </td>
                   <td>
-                    <button className='btn btn-primary' 
+                    <button className='btn btn-primary'
                       onClick={() => onButtonClick(item)}>Accept</button>
                   </td>
                 </tr>
