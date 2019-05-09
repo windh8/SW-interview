@@ -5,14 +5,16 @@ const SoldSales = (props) => {
   return(
     <div>
       <table>
+        <thead>
+          <tr>
+            <th>Seller Name</th>
+            <th>Asking Price</th>
+            <th>Image</th>
+            <th>Buyer Name</th>
+            <th>Sale Price</th>
+          </tr>
+        </thead>
         <tbody>
-        <tr>
-          <th>Seller Name</th>
-          <th>Asking Price</th>
-          <th>Image</th>
-          <th>Buyer Name</th>
-          <th>Sale Price</th>
-        </tr>
         {
           props.soldSale.map((item, index) => {
             return(

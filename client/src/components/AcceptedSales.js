@@ -11,15 +11,17 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
   return(
     <div>
       <table>
+        <thead>
+          <tr>
+            <th>Seller Name</th>
+            <th>Asking Price</th>
+            <th>Image</th>
+            <th>Sell To</th>
+            <th>Sale Price</th>
+            <th>Controls</th>
+          </tr>
+        </thead>
         <tbody>
-        <tr>
-          <th>Seller Name</th>
-          <th>Asking Price</th>
-          <th>Image</th>
-          <th>Sell To</th>
-          <th>Sale Price</th>
-          <th>Controls</th>
-        </tr>
         {
           acceptedSale.map((item, index) => {
             return(
