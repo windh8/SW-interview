@@ -53,7 +53,7 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                     onChange={(event) => transaction.buyerName = event.target.value }/>
                 </td>
                 <td>
-                  <input type='text' name={`${index}-SP`} placeholder='Sale Price'
+                  <input type='text' placeholder='Sale Price'
                     onChange={(event) => transaction.salePrice = event.target.value }/>
                 </td>
                 <td>
