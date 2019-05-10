@@ -6,7 +6,7 @@ td, th {
 }
 
 tbody tr:hover {
-  background-color: /*#f2f2f2*/#e6e6e6;
+  background-color: #e6e6e6;
 }
 
 table {
@@ -48,7 +48,11 @@ td button {
   to { opacity: 1; }
 }
 
-.alert.alert-warning {
+/*.alert.alert-warning {
   text-align: center;
   margin-top: 10px;
-}
+}*/
+/*
+.Error {
+  border-color: red;
+}*/

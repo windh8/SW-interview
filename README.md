@@ -8,12 +8,14 @@ and run the following scripts in each directory (in order):
 1. `npm install`
 2. `npm start`
 
-## To Do:
+## Check List:
 - Style Web-App with CSS:
-  - Create a Header & Style it
+  - Create a Header & Style it :heavy_check_mark:
   - Style Components :heavy_check_mark:
 - Comment Code using Block comments :heavy_check_mark:
 - Improve the Front End Look and Feel :heavy_check_mark:
 - Look at possible error cases and how to handle them
+  - sales data missing properties? (confirming with interviewer)
   - empty sales Data :heavy_check_mark:
   - Input check for monetary value (AcceptedSales Component) :heavy_check_mark:
+    - form validation

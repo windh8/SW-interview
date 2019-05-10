@@ -13,7 +13,7 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
 
       /* If the salePrice contains only monetary values, for example (5, 5.24, etc...),
        * then allow the sale item to change its state from 'accepted' to 'sold'. */
-      const isPriceNumber = RegExp('[a-zA-Z]').test(salePrice);
+      const isPriceNumber = RegExp('[a-zA-Z!@#$%^&*()]').test(salePrice);
       if(buyerName && salePrice && !isNaN(parseFloat(salePrice)) && !isPriceNumber) {
         item.status = "Sold";
         console.log(item);
@@ -37,8 +37,8 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
         <tbody>
         {
           acceptedSale.map((item, index) => {
-            const {name, price, imageUrl, transaction} = item;
-
+            const {name = "", price = "0.00", imageUrl, transaction = {}} = item;
+            
             return(
               <tr key={`${name}-${index}`}>
                 <td>{name}</td>
@@ -50,11 +50,22 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                 </td>
                 <td>
                   <input type='text' placeholder='Buyer Name'
-                    onChange={(event) => transaction.buyerName = event.target.value }/>
+                    title="Buyer Name must only contain letters from the alphabet."
+                    onChange={({target}) => transaction.buyerName = target.value }/>
                 </td>
                 <td>
-                  <input type='text' placeholder='Sale Price'
-                    onChange={(event) => transaction.salePrice = event.target.value }/>
+                  <input type='text' placeholder='Sale Price' pattern='[0-9]+[.]?[0-9]*'
+                    title="Please enter in a currency amount."
+                    onChange={({target: {value, classList}}) => {
+                      /*console.log(RegExp('[0-9]?[.]?[0-9]').test(value))
+                      if(!RegExp('/^-?\d*(\.\d+)?$/g').test(value)) {
+                        classList.add("Error");
+                      } else {
+                        classList.remove("Error");
+                      }*/
+
+                      transaction.salePrice = parseFloat(value).toFixed(2).toString();
+                    } }/>
                 </td>
                 <td>
                   <button className='btn btn-primary'

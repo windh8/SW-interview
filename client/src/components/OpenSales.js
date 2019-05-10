@@ -3,6 +3,7 @@ import React from 'react';
 /* OpenSales will show all sales with an 'open' state. It will also allow
  * the user to change an open sale from an 'open' state to an 'accepted' state. */
 const OpenSales = ({openSale, onSaleAccepted}) => {
+  const imagePlaceHolder = 'https://doumatojewelers.com/wp-content/themes/divide-3.3/media/product-placeholder.jpg';
 
   /* onButtonClick will change the state of the selected sale to an
    * 'accepted' state. List of all given sales will be updated through
@@ -27,7 +28,8 @@ const OpenSales = ({openSale, onSaleAccepted}) => {
         <tbody>
           {
             openSale.map((item, index) => {
-              const {name, price, imageUrl} = item;
+              const {name = "N/A", price = "0.00", imageUrl = imagePlaceHolder} = item;              
+
               return(
                 <tr key={index}>
                   <td>{name}</td>
