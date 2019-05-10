@@ -13,8 +13,9 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
 
       /* If the salePrice contains only monetary values, for example (5, 5.24, etc...),
        * then allow the sale item to change its state from 'accepted' to 'sold'. */
-      const isPriceNumber = RegExp('[a-zA-Z!@#$%^&*()]').test(salePrice);
-      if(buyerName && salePrice && !isNaN(parseFloat(salePrice)) && !isPriceNumber) {
+      //const isPriceNumber = salePrice.search('^.[a-zA-Z!@#$%^&*()].$')//RegExp('').test(salePrice);
+      //console.log(`is actual price entered? ${isPriceNumber}`)
+      if(buyerName && salePrice && !isNaN(parseFloat(salePrice)) /*&& isPriceNumber < 0*/) {
         item.status = "Sold";
         console.log(item);
         onSaleSold(item);
@@ -37,8 +38,8 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
         <tbody>
         {
           acceptedSale.map((item, index) => {
-            const {name = "", price = "0.00", imageUrl, transaction = {}} = item;
-            
+            const {name, price, imageUrl, transaction} = item;
+
             return(
               <tr key={`${name}-${index}`}>
                 <td>{name}</td>
@@ -54,7 +55,7 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                     onChange={({target}) => transaction.buyerName = target.value }/>
                 </td>
                 <td>
-                  <input type='text' placeholder='Sale Price' pattern='[0-9]+[.]?[0-9]*'
+                  <input type='text' placeholder='Sale Price' pattern='^[0-9]+[\\.]?[0-9]*$'
                     title="Please enter in a currency amount."
                     onChange={({target: {value, classList}}) => {
                       /*console.log(RegExp('[0-9]?[.]?[0-9]').test(value))
@@ -63,8 +64,10 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                       } else {
                         classList.remove("Error");
                       }*/
-
-                      transaction.salePrice = parseFloat(value).toFixed(2).toString();
+                      if(value.search('^[0-9]+[\\.]?[0-9]*$') >= 0) {
+                        console.log('good value entered')
+                        transaction.salePrice = parseFloat(value).toFixed(2).toString();
+                      }
                     } }/>
                 </td>
                 <td>

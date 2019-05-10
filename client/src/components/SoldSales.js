@@ -17,7 +17,8 @@ const SoldSales = ({soldSale}) => {
         <tbody>
         {
           soldSale.map((item, index) => {
-            const {name = "", price = "", imageUrl, transaction = {}} = item;
+            const {name, price, imageUrl, transaction: {buyerName, salePrice}} = item;
+            
             return(
               <tr key={index}>
                 <td>{name}</td>
@@ -27,8 +28,8 @@ const SoldSales = ({soldSale}) => {
                     <img src={imageUrl} alt={`${name}'s Sale'`}/>
                   </a>
                 </td>
-                <td>{transaction.buyerName}</td>
-                <td>{`$${transaction.salePrice}`}</td>
+                <td>{buyerName}</td>
+                <td>{`$${salePrice}`}</td>
               </tr>
             );
           })
