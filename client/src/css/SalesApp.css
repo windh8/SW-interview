@@ -1,3 +1,28 @@
+.header {
+  text-align: center;
+  margin: 25px 0px;
+}
+
+.header h2 {
+  opacity: 0;
+
+  text-align:center;
+  background: linear-gradient(to right, black, blue, red, orange, black);
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 7s colorCycle linear infinite, fadein 2s ease-in forwards;
+}
+
+@keyframes colorCycle {
+  100% { background-position: 100vw 0px; };
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 td, th {
   width: 150px;
   text-align: center;
@@ -27,32 +52,8 @@ td button {
   border-radius: 20px;
 }
 
-.header {
-  text-align: center;
-  margin: 25px 0px;
-}
-
-.header h2 {
-  opacity: 0;
-  -webkit-animation: fadein 2s ease-in;
-  animation: fadein 2s ease-in;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@-webkit-keyframes fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/*.alert.alert-warning {
-  text-align: center;
-  margin-top: 10px;
-}*/
-/*
-.Error {
+.saleErr {
   border-color: red;
-}*/
+  border-width: 3px;
+  color: red;
+}

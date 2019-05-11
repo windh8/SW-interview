@@ -11,15 +11,30 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
   const onButtonClick = item => {
       const {buyerName, salePrice} = item.transaction;
 
-      /* If the salePrice contains only monetary values, for example (5, 5.24, etc...),
-       * then allow the sale item to change its state from 'accepted' to 'sold'. */
-      //const isPriceNumber = salePrice.search('^.[a-zA-Z!@#$%^&*()].$')//RegExp('').test(salePrice);
-      //console.log(`is actual price entered? ${isPriceNumber}`)
-      if(buyerName && salePrice && !isNaN(parseFloat(salePrice)) /*&& isPriceNumber < 0*/) {
+      /* If the salePrice property, of the sale item, contains a valid value,
+       * for example (5, 5.24, etc...), and not 'NaN', then the sale item will
+       * change its state from 'accepted' to 'sold'. */
+      if(buyerName && salePrice && salePrice !== 'NaN') {
         item.status = "Sold";
         console.log(item);
         onSaleSold(item);
       }
+  }
+
+  /* amountValidation will store the value entered, in the Sale Price field,
+   * into the sale item's transaction.salePrice property if the value has the
+   * correct pattern, otherwise it will store NaN and outline the text field
+   * with the incorrect value with red instead. */
+  const amountValidation = ({value, classList}, transaction) => {
+    const hasCorrectValue = !Number.isNaN(value) && value.search('[^0-9.]+') === -1;
+    if(hasCorrectValue) {
+      classList.remove('saleErr');
+      transaction.salePrice = parseFloat(value).toFixed(2).toString();
+    }
+    else {
+      classList.add('saleErr')
+      transaction.salePrice = "NaN";
+    }
   }
 
   return(
@@ -57,18 +72,8 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                 <td>
                   <input type='text' placeholder='Sale Price' pattern='^[0-9]+[\\.]?[0-9]*$'
                     title="Please enter in a currency amount."
-                    onChange={({target: {value, classList}}) => {
-                      /*console.log(RegExp('[0-9]?[.]?[0-9]').test(value))
-                      if(!RegExp('/^-?\d*(\.\d+)?$/g').test(value)) {
-                        classList.add("Error");
-                      } else {
-                        classList.remove("Error");
-                      }*/
-                      if(value.search('^[0-9]+[\\.]?[0-9]*$') >= 0) {
-                        console.log('good value entered')
-                        transaction.salePrice = parseFloat(value).toFixed(2).toString();
-                      }
-                    } }/>
+                    onChange={ ({target}) => amountValidation(target, transaction)
+                    }/>
                 </td>
                 <td>
                   <button className='btn btn-primary'
