@@ -19,4 +19,4 @@ and run the following scripts in each directory (in order):
   - form validation for AcceptedSales component
     - Validate input for Sale Price Field :heavy_check_mark:
     - Ensure sell button changes sale item's state when sale item's transaction.salePrice property is of correct pattern :heavy_check_mark:
-    - Validate input for Buyers Name Field (Currently Working On) :white_check_mark:
+    - Validate input for Buyers Name Field :heavy_check_mark:

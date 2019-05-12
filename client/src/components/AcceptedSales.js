@@ -30,12 +30,26 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
     if(hasCorrectValue) {
       classList.remove('saleErr');
       transaction.salePrice = parseFloat(value).toFixed(2).toString();
-    }
-    else {
+    } else {
       classList.add('saleErr')
       transaction.salePrice = "NaN";
     }
   }
+
+
+  const nameValidation = ({value, classList}, transaction) => {
+    const hasCorrectValue = value.search('^[A-Z][a-z]+[\\s]?[a-zA-Z\\s\\.]*$');
+    if(hasCorrectValue >= 0) {
+      classList.remove('saleErr');
+      transaction.buyerName = value;
+    } else if(!value) {
+      classList.remove('saleErr');
+    } else {
+      classList.add('saleErr');
+      transaction.buyerName = '';
+    }
+  }
+
 
   return(
     <div>
@@ -67,13 +81,17 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                 <td>
                   <input type='text' placeholder='Buyer Name'
                     title="Buyer Name must only contain letters from the alphabet."
-                    onChange={({target}) => transaction.buyerName = target.value }/>
+                    onChange={({target}) => {
+                      nameValidation(target, transaction)
+                      //transaction.buyerName = target.value
+                    }
+                  }/>
                 </td>
                 <td>
+                  <span>$</span>
                   <input type='text' placeholder='Sale Price' pattern='^[0-9]+[\\.]?[0-9]*$'
-                    title="Please enter in a currency amount."
-                    onChange={ ({target}) => amountValidation(target, transaction)
-                    }/>
+                    title="Please enter in a dollar amount."
+                    onChange={ ({target}) => amountValidation(target, transaction) }/>
                 </td>
                 <td>
                   <button className='btn btn-primary'
