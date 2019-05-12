@@ -4,10 +4,10 @@ import React from 'react';
  * the user to change an open sale from an 'open' state to an 'accepted' state. */
 const OpenSales = ({openSale, onSaleAccepted}) => {
 
-  /* onButtonClick will change the state of the selected sale to an
+  /* changeStatusToAccept will change the state of the selected sale to an
    * 'accepted' state. List of all given sales will be updated through
    * onSaleAccepted to reflect change(s). */
-  const onButtonClick = item => {
+  const changeStatusToAccept = item => {
     item.status = "Accepted";
     console.log(item);
     onSaleAccepted(item);
@@ -40,7 +40,7 @@ const OpenSales = ({openSale, onSaleAccepted}) => {
                   </td>
                   <td>
                     <button className='btn btn-primary'
-                      onClick={() => onButtonClick(item)}>Accept</button>
+                      onClick={ () => changeStatusToAccept(item) }>Accept</button>
                   </td>
                 </tr>
               );

@@ -5,10 +5,10 @@ import React from 'react';
  * 'sold' state. */
 const AcceptedSales = ({acceptedSale, onSaleSold}) => {
 
-  /* onButtonClick will change the state of the selected sale to an
+  /* changeStatusToSold will change the state of the selected sale to an
    * 'sold' state. List of all given sales will be updated through
    * onSaleSold to reflect change(s). */
-  const onButtonClick = item => {
+  const changeStatusToSold = item => {
       const {buyerName, salePrice} = item.transaction;
 
       /* If the salePrice property, of the sale item, contains a valid value,
@@ -95,7 +95,7 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                 </td>
                 <td>
                   <button className='btn btn-primary'
-                    onClick={() => onButtonClick(item) }>Sell</button>
+                    onClick={ () => changeStatusToSold(item) }>Sell</button>
                 </td>
               </tr>
             );
