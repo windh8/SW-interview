@@ -1,14 +1,23 @@
 # How do I run the Web-App?
-To run the web app you will need to go into the following directories:
-- api
-- client
+To run the web app you
+- First, need to setup and run the 'api' server, located in '/SW-interview/api' directory, using (in order)
+  1. `npm install`
+  2. `npm start`
 
-and run the following scripts in each directory (in order):
+- Second, need to setup and run the 'client' server, located in '/SW-interview/client' directory, using (in order)
+  1. `npm install`
+  2. `npm start`
 
-1. `npm install`
-2. `npm start`
+
+Once Done, you can view the web-app at 'http://localhost:3000/' on your browser.
+
+
+## Requirements
+To setup and run the app, you must have Node.js and NPM installed.
+
 
 ## Check List:
+The following items below have been implemented and tested:
 - Style Web-App with CSS:
   - Create a Header & Style it :heavy_check_mark:
   - Style Components :heavy_check_mark:

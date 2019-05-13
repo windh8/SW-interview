@@ -16,9 +16,8 @@ const SoldSales = ({soldSale}) => {
         </thead>
         <tbody>
         {
-          soldSale.map((item, index) => {
-            const {name, price, imageUrl, transaction: {buyerName, salePrice}} = item;
-            
+          soldSale.map(({name, price, imageUrl, transaction: {buyerName, salePrice}}, index) => {
+
             return(
               <tr key={index}>
                 <td>{name}</td>

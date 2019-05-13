@@ -36,7 +36,10 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
     }
   }
 
-
+  /* nameValidation will store the value entered, in the Buyer Name field,
+   * into the sale item's transaction.buyerName property if the value has the
+   * correct pattern, otherwise it will outline the text field
+   * with the incorrect value with red instead. */
   const nameValidation = ({value, classList}, transaction) => {
     const hasCorrectValue = value.search('^[A-Z][a-z]+[\\s]?[a-zA-Z\\s\\.]*$');
     if(hasCorrectValue >= 0) {
@@ -81,15 +84,11 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                 <td>
                   <input type='text' placeholder='Buyer Name'
                     title="Buyer Name must only contain letters from the alphabet."
-                    onChange={({target}) => {
-                      nameValidation(target, transaction)
-                      //transaction.buyerName = target.value
-                    }
-                  }/>
+                    onChange={({target}) => nameValidation(target, transaction) }/>
                 </td>
                 <td>
                   <span>$</span>
-                  <input type='text' placeholder='Sale Price' pattern='^[0-9]+[\\.]?[0-9]*$'
+                  <input type='text' placeholder='Sale Price'
                     title="Please enter in a dollar amount."
                     onChange={ ({target}) => amountValidation(target, transaction) }/>
                 </td>
