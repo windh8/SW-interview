@@ -83,13 +83,13 @@ const AcceptedSales = ({acceptedSale, onSaleSold}) => {
                 </td>
                 <td>
                   <input type='text' placeholder='Buyer Name'
-                    title="Buyer Name must only contain letters from the alphabet."
+                    title="Buyer Name must only contain letters from the alphabet. The First letter in each word must be capitalized. Example: John Smith"
                     onChange={({target}) => nameValidation(target, transaction) }/>
                 </td>
                 <td>
                   <span>$</span>
                   <input type='text' placeholder='Sale Price'
-                    title="Please enter in a dollar amount."
+                    title="Please enter in a dollar amount. Example: 15.46"
                     onChange={ ({target}) => amountValidation(target, transaction) }/>
                 </td>
                 <td>
