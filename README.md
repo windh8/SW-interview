@@ -29,3 +29,6 @@ The following items below have been implemented and tested:
     - Validate input for Sale Price Field :heavy_check_mark:
     - Ensure sell button changes sale item's state when sale item's transaction.salePrice property is of correct pattern :heavy_check_mark:
     - Validate input for Buyers Name Field :heavy_check_mark:
+
+## Notes:
+This repo was a coding scenario (Test) from a Company.
